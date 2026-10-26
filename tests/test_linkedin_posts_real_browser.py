@@ -200,3 +200,22 @@ def test_see_more_is_expanded_so_hidden_email_is_visible(browser_page):
     result = parse_post_element(browser_page.locator(POST_CONTAINER_SELECTOR).first)
     assert result is not None
     assert "sam@acme.com" in result["post_text"]
+
+
+def _post_with_age(age):
+    return SYNTHETIC_POST_HTML.replace("<span>3h</span>", f"<span>{age}</span>")
+
+
+@pytest.mark.parametrize("age", ["3mo", "1yr", "2 weeks", "5w", "1mo • Edited"])
+def test_author_found_for_older_post_ages(browser_page, age):
+    """Regression (v11): 'mo'/'yr' ages never matched, so author name came back null for every older post."""
+    browser_page.set_content(_post_with_age(age))
+    result = parse_post_element(browser_page.locator(POST_CONTAINER_SELECTOR).first)
+    assert result["author_name"] == "Jane Recruiter"
+    assert result["author_headline"] == "Talent Acquisition at ExampleCo"
+
+
+def test_author_name_falls_back_to_link_text_without_any_timestamp(browser_page):
+    browser_page.set_content(SYNTHETIC_POST_HTML.replace("<span>3h</span>", ""))
+    result = parse_post_element(browser_page.locator(POST_CONTAINER_SELECTOR).first)
+    assert result["author_name"] == "Jane Recruiter"
