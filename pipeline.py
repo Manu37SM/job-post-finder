@@ -27,7 +27,7 @@ posts in the same run can be deduped against earlier ones.
 """
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from config import Config
 from core.models import ExtractedPost, FilteredRecord, RawPost, RecordStatus, SourceType
@@ -87,7 +87,7 @@ def process_post(
                         post_url=raw.post_url,
                         image_url=image_url,
                         error=result.error or "unknown OCR error",
-                        timestamp=datetime.now(timezone.utc).isoformat(),
+                        timestamp=datetime.now(UTC).isoformat(),
                     )
                 )
 

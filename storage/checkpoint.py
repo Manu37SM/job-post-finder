@@ -10,7 +10,7 @@ something the pipeline reads back to decide what to skip.
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -18,7 +18,7 @@ def write_checkpoint(path: str | Path, posts_seen: int, last_post_url: str | Non
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": datetime.now(UTC).isoformat(),
         "posts_seen": posts_seen,
         "last_post_url": last_post_url,
     }
