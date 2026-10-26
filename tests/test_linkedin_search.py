@@ -340,3 +340,16 @@ def test_session_expiry_still_aborts_the_run(monkeypatch, tmp_path):
     monkeypatch.setattr(search, "search_posts", boom)
     with pytest.raises(SessionExpiredError):
         search.discover_posts("s.json", ["a"], 5, image_dest_dir=tmp_path)
+
+
+def test_search_url_is_sorted_newest_first():
+    assert build_search_url("Java Developer hiring Mumbai").endswith("&sortBy=%22date_posted%22")
+
+
+def test_example_config_terms_target_hiring_and_location():
+    import json
+    from pathlib import Path
+
+    cfg = json.loads(Path("config.example.json").read_text(encoding="utf-8"))
+    assert all("hiring" in t.lower() or "send your resume" in t.lower() for t in cfg["search_terms"])
+    assert "open to work" in cfg["exclude_keywords"]

@@ -62,8 +62,17 @@ INITIAL_LOAD_TIMEOUT_MS = 10_000
 GOTO_TIMEOUT_MS = 60_000
 
 
+# Newest first. Relevance order surfaces old evergreen posts (tutorials,
+# job-seeker posts, expired openings); a recruiter's "send CV to ..." post is
+# only useful while it is fresh. LinkedIn ignores unknown query parameters, so
+# if this value ever stops working the search simply falls back to relevance.
+SORT_BY_DATE = True
+_SORT_PARAM = "&sortBy=%22date_posted%22"
+
+
 def build_search_url(term: str) -> str:
-    return SEARCH_URL_TEMPLATE.format(keywords=quote(term))
+    url = SEARCH_URL_TEMPLATE.format(keywords=quote(term))
+    return url + _SORT_PARAM if SORT_BY_DATE else url
 
 
 def search_posts(

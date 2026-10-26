@@ -6,7 +6,7 @@ test_pipeline.py don't each hand-roll fixtures.
 
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 from core.models import (
     Confidence,
@@ -18,15 +18,14 @@ from core.models import (
     SourceType,
     WorkMode,
 )
-
-_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+from tests.fonts import bold_font
 
 
 def make_flyer_image(path: Path, lines: list[str], size=(600, 400)) -> Path:
     """Synthetic 'hiring poster' image for OCR-integration tests."""
     img = Image.new("RGB", size, "white")
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype(_FONT_PATH, 32)
+    font = bold_font(32)
     y = 30
     for line in lines:
         draw.text((30, y), line, fill="black", font=font)

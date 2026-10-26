@@ -9,4 +9,4 @@
 - Mailer export de-duplicates by email (case-insensitive).
 - Summary shows how many posts awaiting review have no email.
 - Database closes its connection on garbage collection (clean under `-W error` on Python 3.13).
-- Added Dependabot, CI (secret guard, ruff, tests on 3.10-3.13 + Windows, pip-audit), CodeQL, `pyproject.toml`, `requirements-dev.txt`.
+- Added Dependabot, CI (secret guard, ruff, tests on 3.11-3.13 + Windows; Python 3.10 dropped, it reached end of life and Pillow 13 needs 3.11+, pip-audit), CodeQL, `pyproject.toml`, `requirements-dev.txt`.
