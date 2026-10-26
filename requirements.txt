@@ -9,7 +9,7 @@
 # distros it's a separate package:
 #   Ubuntu/Debian: sudo apt-get install python3-tk
 
-pytest>=7.4
+pytest>=9.1.1
 pytesseract>=0.3.10
 Pillow>=13.0.0
 openpyxl>=3.1
