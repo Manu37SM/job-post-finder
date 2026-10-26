@@ -1,0 +1,64 @@
+{
+    "search_terms": [
+        "Java Developer",
+        "Java Engineer",
+        "Backend Developer",
+        "Java Backend Developer",
+        "Spring Boot Developer",
+        "Software Engineer",
+        "Full Stack Developer"
+    ],
+
+    "accepted_location": "Mumbai",
+
+    "accepted_location_aliases": [
+        "Mumbai",
+        "Bombay",
+        "Mumbai Metropolitan Region",
+        "MMR"
+    ],
+
+    "accepted_remote_terms": [
+        "Remote",
+        "Fully Remote",
+        "Remote - India",
+        "India Remote",
+        "Work From Home",
+        "WFH",
+        "Remote anywhere in India"
+    ],
+
+    "target_roles": [
+        "Java Developer",
+        "Java Engineer",
+        "Java Backend Developer",
+        "Backend Developer",
+        "Spring Boot Developer",
+        "Software Engineer",
+        "Full Stack Developer"
+    ],
+
+    "exclude_keywords": [
+        "course",
+        "training",
+        "bootcamp",
+        "certification",
+        "tutorial",
+        "learn java",
+        "job seeker",
+        "looking for job",
+        "resume service"
+    ],
+
+    "ocr_provider": "tesseract",
+    "tesseract_cmd": null,
+    "image_hash_max_distance": 8,
+
+    "max_posts": 100,
+    "max_scrolls": 15,
+    "scroll_pause_seconds": 1.5,
+    "minimum_relevance_score": 0,
+    "deduplicate": true,
+    "review_required": true,
+    "dry_run": true
+}

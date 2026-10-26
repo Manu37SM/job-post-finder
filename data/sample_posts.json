@@ -1,0 +1,24 @@
+[
+    {
+        "post_url": "https://linkedin.com/posts/demo-1",
+        "post_text": "We're hiring a Java Developer!\nLocation: Mumbai\nSend CV to jobs@example.com",
+        "author_name": "John Doe",
+        "author_linkedin_url": "https://linkedin.com/in/johndoe",
+        "author_headline": "Talent Acquisition at ABC Technologies Pvt Ltd"
+    },
+    {
+        "post_url": "https://linkedin.com/posts/demo-2",
+        "post_text": "Hiring Backend Developer\nLocation: Pune\nOnsite\nSend resume to careers@example.com",
+        "author_name": "Jane Smith"
+    },
+    {
+        "post_url": "https://linkedin.com/posts/demo-3",
+        "post_text": "Java Engineer needed\nLocation: Bangalore\nRemote - India\nDM me or email hr@example.com",
+        "author_name": "Priya Rao"
+    },
+    {
+        "post_url": "https://linkedin.com/posts/demo-4",
+        "post_text": "Learn Java Developer skills in 6 weeks! Join our Java Bootcamp today.",
+        "author_name": "Career Academy"
+    }
+]

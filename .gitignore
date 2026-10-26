@@ -1,0 +1,33 @@
+config.json
+.env
+
+# LinkedIn session / auth state
+session-linkedin.json
+storage_state.json
+
+# generated output - contains real names/emails, never commit
+data/*.xlsx
+data/*.csv
+data/*.txt
+data/*.db
+!data/sample_posts.json
+!data/.gitkeep
+
+# logs can contain post text / emails
+logs/*.log
+logs/*.csv
+!logs/.gitkeep
+
+# downloaded post images (real scraper's local cache)
+data/downloaded_images/
+
+checkpoint.json
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# LinkedIn page snapshots from zero-result debugging (contain real profile data)
+data/debug/
+.ruff_cache/
+*.zip
