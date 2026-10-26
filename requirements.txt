@@ -12,7 +12,7 @@
 pytest>=7.4
 pytesseract>=0.3.10
 Pillow>=10.0
-openpyxl>=3.1
+openpyxl>=3.1.5
 playwright>=1.40
 ImageHash>=4.3
 
