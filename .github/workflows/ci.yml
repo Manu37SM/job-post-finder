@@ -18,7 +18,7 @@ jobs:
     name: No private files tracked
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Fail if session, config or generated data is tracked by git
         run: |
           bad=$(git ls-files | grep -E '^(config\.json|\.env|session-.*\.json|storage_state\.json|checkpoint\.json)$|^data/.*\.(xlsx|csv|txt|db)$|^data/(downloaded_images|debug)/|^logs/.*\.(log|csv)$' || true)
@@ -32,8 +32,8 @@ jobs:
     name: Lint (ruff)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -53,8 +53,8 @@ jobs:
           - os: windows-latest
             python-version: "3.12"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -90,8 +90,8 @@ jobs:
     name: Dependency vulnerability audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: pip install pip-audit
