@@ -1,19 +1,18 @@
 from pathlib import Path
 
 import pytest
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 from ocr.engine import get_ocr_provider, is_worth_ocr
 from ocr.tesseract import TesseractOcrProvider
-
-FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+from tests.fonts import bold_font
 
 
 def _make_flyer(path: Path, lines: list[str], size=(600, 400)) -> None:
     """Synthetic 'hiring poster' image: white background, bold black text."""
     img = Image.new("RGB", size, "white")
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype(FONT_PATH, 32)
+    font = bold_font(32)
     y = 30
     for line in lines:
         draw.text((30, y), line, fill="black", font=font)
@@ -174,17 +173,14 @@ def test_not_installed_error_gets_actionable_hint_appended(monkeypatch, tmp_path
 def test_low_contrast_coloured_flyer_is_recovered(tmp_path):
     """Regression (v11): white text on orange - the fixed threshold-150 pass
     turns BOTH to white and returns an empty string; the fallback recovers it."""
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw
 
     if not __import__("shutil").which("tesseract"):
         import pytest
         pytest.skip("tesseract not installed")
     img = Image.new("RGB", (900, 220), (240, 170, 90))
     d = ImageDraw.Draw(img)
-    try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 44)
-    except OSError:
-        font = ImageFont.load_default()
+    font = bold_font(44)
     d.text((20, 70), "Send CV: hr@acmejobs.com", fill=(255, 255, 255), font=font)
     path = tmp_path / "dark.png"
     img.save(path)

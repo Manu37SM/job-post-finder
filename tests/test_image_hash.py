@@ -1,9 +1,8 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 from ocr.image_hash import compute_phash, hamming_distance, is_near_duplicate
 from tests.factories import make_flyer_image
-
-_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+from tests.fonts import bold_font
 
 
 def test_identical_images_have_zero_distance(tmp_path):
@@ -41,7 +40,7 @@ def test_different_images_are_not_near_duplicates(tmp_path):
     # A visually distinct image: different background color and content.
     different = Image.new("RGB", (600, 400), "black")
     draw = ImageDraw.Draw(different)
-    font = ImageFont.truetype(_FONT_PATH, 32)
+    font = bold_font(32)
     draw.text((30, 200), "Unrelated birthday party invite", fill="white", font=font)
     different_path = tmp_path / "different.png"
     different.save(different_path)

@@ -270,7 +270,7 @@ new extractor, run `python reset.py` (keeps `config.json` and your LinkedIn sess
 
 `.github/workflows/ci.yml` runs on every push/PR: a guard that fails if `config.json`,
 session files, databases or exported data are ever committed, `ruff check`, the full test
-suite with warnings as errors (Ubuntu on Python 3.10-3.13 plus Windows), and `pip-audit`.
+suite with warnings as errors (Ubuntu on Python 3.11-3.13 plus Windows), and `pip-audit`.
 `.github/workflows/codeql.yml` adds weekly code scanning. `.github/dependabot.yml` opens
 weekly grouped PRs for Python packages and for the GitHub Actions themselves.
 Nothing in CI logs in to LinkedIn or needs secrets.
