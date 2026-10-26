@@ -1,23 +1,21 @@
 {
     "search_terms": [
-        "Java Developer",
-        "Java Engineer",
-        "Backend Developer",
-        "Java Backend Developer",
-        "Spring Boot Developer",
-        "Software Engineer",
-        "Full Stack Developer"
+        "Java Developer hiring Mumbai",
+        "Java Backend Developer hiring Mumbai send CV",
+        "Spring Boot Developer hiring Mumbai",
+        "Backend Developer hiring Mumbai email resume",
+        "Full Stack Developer hiring Mumbai",
+        "hiring Java Developer remote India",
+        "\"send your resume\" Java Mumbai",
+        "urgent hiring Java Developer Mumbai"
     ],
-
     "accepted_location": "Mumbai",
-
     "accepted_location_aliases": [
         "Mumbai",
         "Bombay",
         "Mumbai Metropolitan Region",
         "MMR"
     ],
-
     "accepted_remote_terms": [
         "Remote",
         "Fully Remote",
@@ -27,7 +25,6 @@
         "WFH",
         "Remote anywhere in India"
     ],
-
     "target_roles": [
         "Java Developer",
         "Java Engineer",
@@ -37,7 +34,6 @@
         "Software Engineer",
         "Full Stack Developer"
     ],
-
     "exclude_keywords": [
         "course",
         "training",
@@ -47,13 +43,18 @@
         "learn java",
         "job seeker",
         "looking for job",
-        "resume service"
+        "resume service",
+        "open to work",
+        "#opentowork",
+        "looking for my next",
+        "looking for a new opportunity",
+        "available for immediate joining",
+        "seeking new opportunities",
+        "i am looking for a job"
     ],
-
     "ocr_provider": "tesseract",
     "tesseract_cmd": null,
     "image_hash_max_distance": 8,
-
     "max_posts": 100,
     "max_scrolls": 15,
     "scroll_pause_seconds": 1.5,

@@ -78,7 +78,11 @@ POST_CONTAINER_SELECTOR = '[role="listitem"]'
 # without needing a real LinkedIn session.
 _EXTRACT_JS = r"""
 (el) => {
-    const timeRe = /^(?:\d+[smhdwy]|now|just now|[A-Za-z]{3}\s+\d{1,2})(?:\s*\u2022\s*Edited)?$/i;
+    // Relative ages as LinkedIn renders them: 5m, 3h, 2d, 1w, 3mo, 1yr, "2 weeks",
+    // optionally followed by "• Edited" and/or a visibility marker. The original
+    // pattern only knew s/m/h/d/w/y, so posts older than a month ("3mo", "1yr")
+    // never matched, no header was found, and author name/headline came back null.
+    const timeRe = /^(?:\d+\s*(?:s|sec|secs|m|min|mins|h|hr|hrs|d|w|wk|wks|mo|mos|y|yr|yrs|seconds?|minutes?|hours?|days?|weeks?|months?|years?)|now|just now|[A-Za-z]{3}\s+\d{1,2})(?:\s*[\u2022\u00b7]\s*(?:Edited|Visible to anyone on or off LinkedIn))*\s*[\u2022\u00b7]?$/i;
     const degreeRe = /^\u2022?\s*(1st|2nd|3rd\+?|\d+(st|nd|rd|th))$/i;
     const locModeRe = /^(.+?)\s*\((On-site|Onsite|Remote|Hybrid)\)$/i;
 
@@ -110,6 +114,15 @@ _EXTRACT_JS = r"""
                 break;
             }
         }
+    }
+
+    // Fallback when the header-container heuristic above finds no timestamp:
+    // LinkedIn renders the name twice inside the profile link (visible + a11y
+    // copy), so the first non-empty line of the link text is the name.
+    if (authorLink && !authorName) {
+        const lines = authorLink.innerText.split('\n').map(t => t.trim()).filter(Boolean);
+        const first = lines.find(t => !degreeRe.test(t));
+        if (first) authorName = first.replace(/\s*[\u2022\u00b7]\s*(1st|2nd|3rd\+?)$/i, '').trim();
     }
 
     let postText = "";
