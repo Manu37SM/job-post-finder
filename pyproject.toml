@@ -1,0 +1,14 @@
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+extend-exclude = ["data", "logs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "I"]
+ignore = [
+    "E501",  # long docstrings/regex comments are intentional here
+    "B008",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["core", "export", "extraction", "filtering", "linkedin", "ocr", "review", "storage", "app", "config", "pipeline", "gui", "gui_controller", "reset", "tests"]
